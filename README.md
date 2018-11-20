@@ -2,9 +2,6 @@
 This is an example BDD test automation Project for Java using the Cucumber-JVM framework.
 It contains a simple behavior scenario that performs a basic Google search.
 
-### Purpose
-This project was developed by [Automation Panda](https://www.automationpanda.com/)
-to demonstrate how to use Cucumber-JVM as a BDD test framework.
 
 ### Version
 This project uses Cucumber-JVM 2.0.
