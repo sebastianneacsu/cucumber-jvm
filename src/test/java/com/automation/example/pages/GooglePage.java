@@ -5,15 +5,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GooglePage extends AbstractPage {
 
     private static final String GOOGLE_HOME_URL = "https://www.google.com/";
-    private static final By BY_SEARCH_FIELD = By.name("q");
+
+    @FindBy(name="q")
+    private WebElement BY_SEARCH_FIELD;
+    //private static final By BY_SEARCH_FIELD = By.name("q");
 
     public GooglePage(WebDriver driver) {
+
         super(driver);
+        PageFactory.initElements(driver, this);
+
     }
 
     public void navigateToHomePage() {
