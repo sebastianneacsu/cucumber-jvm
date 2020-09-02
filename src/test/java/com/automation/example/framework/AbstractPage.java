@@ -3,6 +3,14 @@ package com.automation.example.framework;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Properties;
+
+
 public abstract class AbstractPage {
 
     private WebDriver driver;
@@ -50,8 +58,9 @@ public abstract class AbstractPage {
                 hmap.put("url", prop.getProperty("accUrl"));
                 hmap.put("password", prop.getProperty("accPassword"));
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (input != null) {
                 try {
@@ -63,5 +72,12 @@ public abstract class AbstractPage {
         }
         return hmap;
     }
-
+    public void hardWait(Integer miliseconds){
+        try {
+            Thread.sleep(miliseconds);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

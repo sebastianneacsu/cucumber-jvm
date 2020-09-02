@@ -13,36 +13,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GoogleSearchSteps {
 
-    private WebDriver driver;
-    private GooglePage googlePage;
+    private RootSteps rootSteps;
 
-    @Before(value = "@web", order = 1)
-    public void initWebDriver() throws Throwable {
-        driver = new ChromeDriver();
+    public GoogleSearchSteps(RootSteps rootSteps) {
+        this.rootSteps = rootSteps;
     }
 
-    @Before(value = "@google", order = 10)
-    public void initGooglePage() throws Throwable {
-        googlePage = new GooglePage(driver);
-    }
 
     @Given("^a web browser is on the Google page$")
     public void aWebBrowserIsOnTheGooglePage() throws Throwable {
-        googlePage.navigateToHomePage();
+        rootSteps.googlePage.navigateToHomePage();
     }
 
     @When("^the search phrase \"([^\"]*)\" is entered$")
     public void theSearchPhraseIsEntered(String phrase) throws Throwable {
-        googlePage.enterSearchPhrase(phrase);
+        rootSteps.googlePage.enterSearchPhrase(phrase);
     }
 
     @Then("^results for \"([^\"]*)\" are shown$")
     public void resultsForAreShown(String phrase) throws Throwable {
-        assertThat(googlePage.pageTitleContains(phrase)).isTrue();
-    }
-
-    @After(value = "@web")
-    public void disposeWebDriver() throws Throwable {
-        driver.quit();
+        assertThat(rootSteps.googlePage.pageTitleContains(phrase)).isTrue();
     }
 }
