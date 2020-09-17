@@ -23,7 +23,7 @@ public class GooglePage extends AbstractPage {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.add_argument("--headless");
+        options.addArguments("--headless");
 
         PageFactory.initElements(driver, this);
 
