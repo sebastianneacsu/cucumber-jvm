@@ -28,8 +28,13 @@ public abstract class AbstractPage {
         return new WebDriverWait(driver, timeoutSeconds);
     }
 
- public String getEnvironment() {
+/* public String getEnvironment() {
         return "local";
+    }*/
+
+    public String getEnvironment() {
+        System.out.println("Profile ID:  " + System.getProperty("profileId"));
+        return System.getProperty("profileId");
     }
 
     public HashMap <String, String> getEnvProps(){
@@ -45,16 +50,16 @@ public abstract class AbstractPage {
             prop.load(input);
 
             // get the property value and print it out
-            if (this.getEnvironment() == "local"){
+            if (this.getEnvironment().contains("local")){
                 hmap.put("username", prop.getProperty("localUsername"));
                 hmap.put("url", prop.getProperty("localUrl"));
                 hmap.put("password", prop.getProperty("localPassword"));
-            } else if (this.getEnvironment() == "test"){
+            } else if (this.getEnvironment().contains("test")){
                 hmap.put("username", prop.getProperty("testUsername"));
                 hmap.put("url", prop.getProperty("testUrl"));
                 hmap.put("password", prop.getProperty("testPassword"));
             }
-            else if (this.getEnvironment() == "acc"){
+            else if (this.getEnvironment().contains("acc")){
                 hmap.put("username", prop.getProperty("accUsername"));
                 hmap.put("url", prop.getProperty("accUrl"));
                 hmap.put("password", prop.getProperty("accPassword"));

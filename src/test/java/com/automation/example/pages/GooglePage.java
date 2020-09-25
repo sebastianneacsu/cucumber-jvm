@@ -13,8 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GooglePage extends AbstractPage {
 
-    private static final String GOOGLE_HOME_URL = "https://www.google.com/";
-
     @FindBy(name="q")
     private WebElement BY_SEARCH_FIELD;
     //private static final By BY_SEARCH_FIELD = By.name("q");
@@ -26,8 +24,9 @@ public class GooglePage extends AbstractPage {
     }
 
     public void navigateToHomePage() {
-        getDriver().navigate().to(GOOGLE_HOME_URL);
-    }
+        String baseUrl = this.getEnvProps().get("url");
+        getDriver().navigate().to(baseUrl);
+     }
 
     public void enterSearchPhrase(String phrase) {
         WebElement searchField = driverWait(10).until(ExpectedConditions.elementToBeClickable(BY_SEARCH_FIELD));
