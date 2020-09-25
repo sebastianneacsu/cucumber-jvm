@@ -21,6 +21,8 @@ Just remember to install the required web drivers.
 ### Running Tests
 This project uses [Maven](https://maven.apache.org/).
 To run tests, simply run "mvn clean test".
+To run test on the local environment, use "mvn -P local test"
+The available environments are local, test, acc
 
 ### Practice Exercises
 To practice BDD and automation, try the following exercises:
